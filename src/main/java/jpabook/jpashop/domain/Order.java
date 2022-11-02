@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name="orders")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)   // 직접 생성 불가 -> 메서드로 간접 생성만 허용
 @Getter
 @Setter
 public class Order {
@@ -51,7 +54,7 @@ public class Order {
         delivery.setOrder(this);
     }
 
-    //== 생성 메서드 ==//
+    //== 생성 메서드 ==//    for 간접 생성 (new 허용 X)
     public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
         Order order = new Order();
         order.setMember(member);

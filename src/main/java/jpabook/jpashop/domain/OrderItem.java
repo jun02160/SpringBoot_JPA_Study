@@ -1,12 +1,15 @@
 package jpabook.jpashop.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "order_item")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)   // 생성자 접근 범위 설정 어노테이션에서 해결 가능
 @Getter @Setter
 public class OrderItem {
     
@@ -24,6 +27,8 @@ public class OrderItem {
     
     private int orderPrice;  // 주문가격
     private int count;    // 주문수량
+
+//    protected OrderItem() {}   // jpa가 protected까지 허용
 
     //== 생성 메서드 ==//
     public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
