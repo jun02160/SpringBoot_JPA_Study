@@ -26,8 +26,5 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();   // 여기에서 변경해도 Order(FK)값은 변경되지 X
 
-    public Member() {
-
-    }
 
 }
