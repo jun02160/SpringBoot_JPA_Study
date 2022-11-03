@@ -17,6 +17,9 @@ public class ItemRepository {
         if (item.getId() == null) {
             em.persist(item);   // create
         } else {
+            /**
+             * merge란? 영속성 컨테이너에서 변하지 않음  *병합을 사용하면 원하는 속성만 선택하는 것이 아닌 모든 속성에서 변경이 이루어지므로 주의해야 함
+             */
             em.merge(item);    // DB에 등록된 것을 가져온다 = update
         }
     }
